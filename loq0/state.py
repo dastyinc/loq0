@@ -1,6 +1,9 @@
 import numpy as np
 from .const import BOARD_SIZE, I_COUNT, L_COUNT
 
+dx = [0, 0, 1, -1]
+dy = [1, -1, 0, 0]
+
 
 class State:
     def __init__(self, state=np.zeros((2 + (I_COUNT + L_COUNT) * 2, 3), dtype=np.int8)):
@@ -123,21 +126,21 @@ class State:
 
         return True
 
-    def _endable(self):
+    def _bfs(self, stk, pl):
         visited = np.zeros((BOARD_SIZE, BOARD_SIZE), dtype=bool)
-        stk = [self.position()[0]]
-        dx = [0, 0, 1, -1]
-        dy = [1, -1, 0, 0]
         visited[stk[0][0], stk[0][1]] = True
         while len(stk) > 0:
             x, y = stk.pop()
             for i in range(1, 5):
                 if not visited[x + dx[i] - 1, y + dy[i] - 1] and self._move((x + dx[i], y + dy[i]), self.position()[0]):
-                    if self.player() == 0 and x + dx[i] == BOARD_SIZE:
+                    if pl == 0 and x + dx[i] == BOARD_SIZE:
                         return True
-                    elif self.player() == 1 and y + dy[i] == BOARD_SIZE:
+                    elif pl == 1 and y + dy[i] == BOARD_SIZE:
                         return True
                     visited[x - 1, y - 1] = True
                     stk.append((x + dx[i], y + dy[i]))
 
         return False
+
+    def _endable(self):
+        return self._bfs([self.position()[0]], self.player()) and self._bfs([self.position()[1]], 1 - self.player())
