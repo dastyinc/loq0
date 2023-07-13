@@ -1,8 +1,7 @@
 import numpy as np
 from ..const import BOARD_SIZE, I_COUNT, L_COUNT
 
-dx = [0, 0, 1, -1]
-dy = [1, -1, 0, 0]
+dx, dy = [0, 0, 1, -1], [1, -1, 0, 0]
 
 
 def bfs(self, stk, pl):
@@ -11,8 +10,7 @@ def bfs(self, stk, pl):
     while len(stk) > 0:
         x, y = stk.pop()
         for i in range(1, 5):
-            if not visited[x + dx[i] - 1, y + dy[i] - 1] and self.movable((x + dx[i], y + dy[i]),
-                                                                          self.position()[0]):
+            if not visited[x + dx[i] - 1, y + dy[i] - 1] and self.movable((x + dx[i], y + dy[i]), self.position()):
                 if pl == 0 and x + dx[i] == BOARD_SIZE:
                     return True
                 elif pl == 1 and y + dy[i] == BOARD_SIZE:
@@ -24,4 +22,4 @@ def bfs(self, stk, pl):
 
 
 def endable(self):
-    return bfs([self.position()[0]], self.player()) and self._bfs([self.position()[1]], 1 - self.player())
+    return bfs(self, [self.position()], self.player()) and bfs(self, [self.position(True)], self.player(True))

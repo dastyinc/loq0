@@ -13,18 +13,13 @@ class State:
     def copy(self):
         return State(self._st.copy())
 
-    def player(self):
-        return self._st[0, 2]
-
-    def opponent(self):
+    def player(self, op=None):
+        if op is None:
+            return self._st[0, 2]
         return 1 - self._st[0, 2]
 
-    def internal(self):
+    def internal(self, op=None):
         pl = self.player()
-        return 4 <= self._st[pl, 0] <= 6 and 4 <= self._st[pl, 1] <= 6
-
-    def internal_opponent(self):
-        pl = 1 - self.player()
         return 4 <= self._st[pl, 0] <= 6 and 4 <= self._st[pl, 1] <= 6
 
     def i_walls(self):
@@ -35,9 +30,9 @@ class State:
         idx = np.where(self._st[2 + I_COUNT * 2:, 0] != 0)[0] + 2 + I_COUNT * 2
         return self._st[2 + I_COUNT * 2:idx, :]
 
-    def position(self):
-        pl = self.player()
-        return (self._st[pl, 0], self._st[pl, 1]), (self._st[1 - pl, 0], self._st[1 - pl, 1])
+    def position(self, op=None):
+        pl = self.player(op)
+        return self._st[pl, 0], self._st[pl, 1]
 
     from validate.blocked import horizontal_block, vertical_block
     from validate.movable import movable
