@@ -34,6 +34,7 @@ class State:
 
     from validate.blocked import horizontal_block, vertical_block
     from validate.movable import movable
-
     from validate.endable import endable
+
+    from actions import move, place_i, place_l
     from actions import act
