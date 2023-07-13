@@ -36,3 +36,4 @@ class State:
     from validate.movable import movable
 
     from validate.endable import endable
+    from actions import act
