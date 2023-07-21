@@ -3,12 +3,15 @@ from .const import BOARD_SIZE, I_COUNT, L_COUNT
 
 
 class State:
-    def __init__(self, state=np.zeros((2 + (I_COUNT + L_COUNT) * 2, 3), dtype=np.uint8)):
-        self.st = state
-        self.st[0, 0] = (BOARD_SIZE + 1) // 2
-        self.st[0, 1] = 1
-        self.st[1, 0] = (BOARD_SIZE + 1) // 2
-        self.st[1, 1] = BOARD_SIZE
+    def __init__(self, state=None, dtype=np.uint8):
+        if state is None:
+            self.st = np.zeros((2 + (I_COUNT + L_COUNT) * 2, 3), dtype=dtype)
+            self.st[0, 0] = (BOARD_SIZE + 1) // 2
+            self.st[0, 1] = 1
+            self.st[1, 0] = (BOARD_SIZE + 1) // 2
+            self.st[1, 1] = BOARD_SIZE
+        else:
+            self.st = state
 
     def copy(self):
         return State(self.st.copy())
@@ -32,9 +35,10 @@ class State:
         pl = self.player(op)
         return self.st[pl, 0], self.st[pl, 1]
 
-    from validate.blocked import horizontal_block, vertical_block
-    from validate.movable import movable
-    from validate.endable import endable
+    from .validate.blocked import horizontal_block, vertical_block
+    from .validate.movable import movable
+    from .validate.endable import endable
 
-    from actions import move, place_i, place_l
-    from actions import act
+    from .actions import move, place_i, place_l
+    from .actions import act
+    from .print import __str__

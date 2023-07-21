@@ -3,7 +3,8 @@ from ..const import BOARD_SIZE, I_COUNT, L_COUNT
 def movable(self, pos, ppos=None, opos=(0, 0)):
     x, y = pos
     if not ppos:
-        (px, py), (ox, oy) = self.position()
+        (px, py) = self.position()
+        (ox, oy) = self.position(1)
     else:
         px, py = ppos
         ox, oy = opos
