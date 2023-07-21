@@ -38,6 +38,8 @@ class State:
     from .validate.blocked import horizontal_block, vertical_block
     from .validate.movable import movable
     from .validate.endable import endable
+    from .validate.cross import cross
+    from .validate.internal import block_internal
 
     from .actions import move, place_i, place_l
     from .actions import act

@@ -1,4 +1,4 @@
-def block_internal(t, x, y, w):
+def block_internal(self, t, x, y, w):
     if t == 1:
         if w == 1:
             if 5 <= x <= 6 and 3 <= y <= 6: return True
