@@ -23,38 +23,33 @@ def __str__(self):
     board[2 * (py - 1)][2 * (px - 1)] = f'{colors.BLUE} O {colors.ENDC}'
     board[2 * (oy - 1)][2 * (ox - 1)] = f'{colors.RED} O {colors.ENDC}'
 
+    def hl(x, y):
+        if x >= 0 and x < 17 and y >= 0 and y < 17:
+            board[y][x] = bold_sym(board[y][x])
+
     for wall_i in self.st[2:16]:
         wx, wy, opt = wall_i
         wx = 2 * wx - 1
         wy = 2 * wy - 1
         if opt == 1:
-            if wx > 1:
-                for ty in [wy - 1, wy, wy + 1]:
-                    board[ty][wx - 2] = bold_sym(board[ty][wx - 2])
+            for ty in [wy - 1, wy, wy + 1]:
+                hl(wx - 2, ty)
         elif opt == 2:
-            if wy > 1:
-                for tx in [wx - 1, wx, wx + 1]:
-                    board[wy - 2][tx] = bold_sym(board[wy - 2][tx])
+            for tx in [wx - 1, wx, wx + 1]:
+                hl(tx, wy - 2)
+
     for wall_l in self.st[16:]:
         wx, wy, opt = wall_l
         wx = 2 * wx - 1
         wy = 2 * wy - 1
         if opt == 1:
-            for coord in [(wx - 1, wy - 2), (wx - 2, wy - 2), (wx - 2, wy - 1)]:
-                tx, ty = coord
-                board[ty][tx] = bold_sym(board[ty][tx])
+            for x, y in [(wx - 1, wy - 2), (wx - 2, wy - 2), (wx - 2, wy - 1)]: hl(x, y)
         elif opt == 2:
-            for coord in [(wx - 1, wy), (wx - 2, wy), (wx - 2, wy - 1)]:
-                tx, ty = coord
-                board[ty][tx] = bold_sym(board[ty][tx])
+            for x, y in [(wx - 1, wy), (wx - 2, wy), (wx - 2, wy - 1)]: hl(x, y)
         elif opt == 3:
-            for coord in [(wx - 1, wy), (wx, wy), (wx, wy - 1)]:
-                tx, ty = coord
-                board[ty][tx] = bold_sym(board[ty][tx])
+            for x, y in [(wx - 1, wy), (wx, wy), (wx, wy - 1)]: hl(x, y)
         elif opt == 4:
-            for coord in [(wx - 1, wy - 2), (wx, wy - 2), (wx, wy - 1)]:
-                tx, ty = coord
-                board[ty][tx] = bold_sym(board[ty][tx])
+            for x, y in [(wx - 1, wy - 2), (wx, wy - 2), (wx, wy - 1)]: hl(x, y)
 
     for i, line in enumerate(board):
         res = f'  {"".join(line)}{colors.CYAN}{(i + 2) // 2 if not i % 2 else " "}{colors.ENDC}\n' + res

@@ -1,4 +1,4 @@
-from ..const import BOARD_SIZE, I_COUNT, L_COUNT
+from ...const import BOARD_SIZE, I_COUNT, L_COUNT
 
 def movable(self, pos, ppos=None, opos=(0, 0)):
     x, y = pos

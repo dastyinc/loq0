@@ -1,5 +1,5 @@
 import numpy as np
-from .const import BOARD_SIZE, I_COUNT, L_COUNT
+from ..const import BOARD_SIZE, I_COUNT, L_COUNT
 
 
 class State:

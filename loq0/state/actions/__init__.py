@@ -5,7 +5,6 @@ ACTION_PLACE_L = 2
 from .move import move
 from .place import place_i, place_l
 
-
 def act(self, t, p1, p2, p3=None):
     if t == ACTION_MOVE:
         return self.move(p1, p2)

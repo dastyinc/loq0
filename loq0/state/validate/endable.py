@@ -1,5 +1,5 @@
 import numpy as np
-from ..const import BOARD_SIZE, I_COUNT, L_COUNT
+from ...const import BOARD_SIZE, I_COUNT, L_COUNT
 
 dx, dy = [0, 0, 1, -1], [1, -1, 0, 0]
 

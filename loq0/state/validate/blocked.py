@@ -1,4 +1,4 @@
-from ..const import BOARD_SIZE, I_COUNT, L_COUNT
+from ...const import BOARD_SIZE, I_COUNT, L_COUNT
 
 
 def vertical_block(self, x, y):
