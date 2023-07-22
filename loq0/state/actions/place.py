@@ -8,9 +8,9 @@ def place_i(self, x, y, w):
         if self.st[idx + i, 0] == 0:
             fl = i
             break
-    if fl == -1: return False
-    if self.cross(1, x, y, w): return False
-    if not self.internal() and self.block_internal(1, x, y, w): return False
+    if fl == -1: return None
+    if self.cross(1, x, y, w): return None
+    if not self.internal() and self.block_internal(1, x, y, w): return None
     st = self.copy()
     st.st[idx + fl, 0] = x
     st.st[idx + fl, 1] = y
@@ -26,9 +26,9 @@ def place_l(self, x, y, w):
         if self.st[idx + i, 0] == 0:
             fl = i
             break
-    if fl == -1: return False
-    if self.cross(2, x, y, w): return False
-    if not self.internal() and self.block_internal(2, x, y, w): return False
+    if fl == -1: return None
+    if self.cross(2, x, y, w): return None
+    if not self.internal() and self.block_internal(2, x, y, w): return None
     st = self.copy()
     st.st[idx + fl, 0] = x
     st.st[idx + fl, 1] = y

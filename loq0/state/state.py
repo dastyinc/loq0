@@ -35,6 +35,13 @@ class State:
         pl = self.player(op)
         return self.st[pl, 0], self.st[pl, 1]
 
+    def win(self):
+        if self.st[0, 1] == BOARD_SIZE:
+            return 0
+        elif self.st[1, 1] == 1:
+            return 1
+        return None
+
     from .validate.blocked import horizontal_block, vertical_block
     from .validate.movable import movable
     from .validate.endable import endable

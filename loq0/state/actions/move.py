@@ -1,5 +1,5 @@
 def move(self, x, y):
-    if not self.movable((x, y)): return False
+    if not self.movable((x, y)): return None
     st = self.copy()
     pl = st.player()
     st.st[pl, 0] = x
