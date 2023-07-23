@@ -14,6 +14,7 @@ def place_i(self, x, y, w):
     st = self.copy()
     st.st[idx + fl, 0] = x
     st.st[idx + fl, 1] = y
+    st.st[0, 2] = 1 - st.st[0, 2]
     st.st[idx + fl, 2] = w
     if not st.endable(): return False
     return st
@@ -32,6 +33,7 @@ def place_l(self, x, y, w):
     st = self.copy()
     st.st[idx + fl, 0] = x
     st.st[idx + fl, 1] = y
+    st.st[0, 2] = 1 - st.st[0, 2]
     st.st[idx + fl, 2] = w
     if not st.endable(): return False
     return st
