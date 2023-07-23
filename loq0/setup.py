@@ -5,7 +5,7 @@ with open("../README.md", "r") as fh:
 
 setuptools.setup(
     name="loq0",
-    version="0.0.1",
+    version="0.0.2",
     author="seorii",
     author_email="me@seorii.page",
     description="League of Quoridor",

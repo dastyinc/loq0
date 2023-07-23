@@ -1,5 +1,6 @@
 from ...const import BOARD_SIZE, I_COUNT, L_COUNT
 
+
 def movable(self, pos, ppos=None, opos=(0, 0)):
     x, y = pos
     if not ppos:
@@ -15,9 +16,9 @@ def movable(self, pos, ppos=None, opos=(0, 0)):
         return False
     elif dis == 1:
         if x == px:
-            if self.vertical_block(x, min(y, py)):
+            if self.vertical_block(x, max(y, py)):
                 return False
-        elif self.horizontal_block(min(x, px), y):
+        elif self.horizontal_block(max(x, px), y):
             return False
     else:
         if x == px:
@@ -34,16 +35,15 @@ def movable(self, pos, ppos=None, opos=(0, 0)):
                 return False
         elif px == ox and y == oy:
             if abs(x - px) != 1 or \
-                    self.vertical_block(px, min(y, py)) or \
-                    self.horizontal_block(min(x, px), y) or \
-                    not self.vertical_block(px,
-                                            y + 1 if y > py else y - 1):
+                    self.vertical_block(px, max(y, py)) or \
+                    self.horizontal_block(max(x, px), y) or \
+                    not self.vertical_block(px, y + 1 if y > py else y):
                 return False
         elif py == oy and x == ox:
             if abs(y - py) != 1 or \
-                    self.vertical_block(x, min(y, py)) or \
-                    self.horizontal_block(min(x, px), y) or \
-                    not self.horizontal_block(x + 1 if x > px else x - 1, py):
+                    self.vertical_block(x, max(y, py)) or \
+                    self.horizontal_block(max(x, px), y) or \
+                    not self.horizontal_block(x + 1 if x > px else x, py):
                 return False
         else:
             return False
