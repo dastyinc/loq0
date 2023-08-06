@@ -2,6 +2,12 @@ from ...const import BOARD_SIZE, I_COUNT, L_COUNT
 
 
 def place_i(self, x, y, w):
+    if w == 1:
+        if x < 1 or x > BOARD_SIZE + 1 or y < 1 or y > BOARD_SIZE - 1: return None
+    elif w == 2:
+        if x < 1 or x > BOARD_SIZE - 1 or y < 1 or y > BOARD_SIZE + 1: return None
+    else:
+        return None
     idx = 2 + self.player() * I_COUNT
     fl = -1
     for i in range(I_COUNT):
@@ -21,6 +27,8 @@ def place_i(self, x, y, w):
 
 
 def place_l(self, x, y, w):
+    if x < 1 or x > BOARD_SIZE or y < 1 or y > BOARD_SIZE: return None
+    if w < 1 or w > 4: return None
     idx = 2 + 2 * I_COUNT + self.player() * L_COUNT
     fl = -1
     for i in range(L_COUNT):

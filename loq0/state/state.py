@@ -26,10 +26,10 @@ class State:
         return 4 <= self.st[pl, 0] <= 6 and 4 <= self.st[pl, 1] <= 6
 
     def i_walls(self):
-        return self.st[np.where(self.st[2:2 + I_COUNT * 2, 0] != 0), :]
+        return self.st[2 + np.array(*np.where(self.st[2:2 + I_COUNT * 2, 0] != 0)), :]
 
     def l_walls(self):
-        return self.st[np.where(self.st[2 + I_COUNT * 2:, 0] != 0), :]
+        return self.st[2 + I_COUNT * 2 + np.array(*np.where(self.st[2 + I_COUNT * 2:, 0] != 0)), :]
 
     def position(self, op=None):
         pl = self.player(op)
