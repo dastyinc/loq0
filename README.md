@@ -4,6 +4,8 @@ League of Quoridor v0.
 
 Will be reimplemented in C++.
 
+![img](img.png)
+
 ### Install
 
 `pip install loq0`
