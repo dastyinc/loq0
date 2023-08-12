@@ -6,11 +6,11 @@ def cross(self, t, x, y, w):
         if w == 1:
             for i in range(2, 2 + I_COUNT * 2):
                 if self.st[i, 0] == x - 1 and self.st[i, 1] == y + 1 and self.st[i, 2] == 2: return True
-            return self.horizontal_block(x, y) or self.horizontal_block(x + 1, y)
+            return self.horizontal_block(x, y) or self.horizontal_block(x, y + 1)
         elif w == 2:
             for i in range(2, 2 + I_COUNT * 2):
                 if self.st[i, 0] == x + 1 and self.st[i, 1] == y - 1 and self.st[i, 2] == 1: return True
-            return self.vertical_block(x, y) or self.vertical_block(x, y + 1)
+            return self.vertical_block(x, y) or self.vertical_block(x + 1, y)
         else:
             return True
     elif t == 2:
