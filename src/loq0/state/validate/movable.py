@@ -48,7 +48,7 @@ def movable(self, pos, ppos=None, opos=(0, 0)):
         else:
             return False
 
-    if ox == x and oy == y and not self.internal():
+    if ox == x and oy == y and not self.internal(True):
         return False
 
     return True

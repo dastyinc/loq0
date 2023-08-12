@@ -5,6 +5,7 @@ class colors:
     CYAN = '\033[96m'
     GREEN = '\033[92m'
     ENDC = '\033[0m'
+    PURPLE = '\033[35m'
 
 
 def bold_sym(s: str):
@@ -20,8 +21,11 @@ def __str__(self):
     res = ''
     board = [[("┼" if y % 2 else "│") if x % 2 else ("───" if y % 2 else "   ") for x in range(17)] for y in range(17)]
 
-    board[2 * (py - 1)][2 * (px - 1)] = f'{colors.BLUE} O {colors.ENDC}'
-    board[2 * (oy - 1)][2 * (ox - 1)] = f'{colors.RED} O {colors.ENDC}'
+    if px == ox and py == oy:
+        board[2 * (py - 1)][2 * (px - 1)] = f'{colors.PURPLE} O {colors.ENDC}'
+    else:
+        board[2 * (py - 1)][2 * (px - 1)] = f'{colors.BLUE} O {colors.ENDC}'
+        board[2 * (oy - 1)][2 * (ox - 1)] = f'{colors.RED} O {colors.ENDC}'
 
     def hl(x, y):
         if x >= 0 and x < 17 and y >= 0 and y < 17:
