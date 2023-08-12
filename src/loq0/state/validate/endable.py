@@ -11,9 +11,9 @@ def bfs(self, stk, pl):
         x, y = stk.pop()
         for i in range(4):
             if self.movable((x + dx[i], y + dy[i]), (x, y)) and not visited[x + dx[i] - 1, y + dy[i] - 1]:
-                if pl == 0 and x + dx[i] == BOARD_SIZE:
+                if pl == 0 and y + dy[i] == BOARD_SIZE:
                     return True
-                elif pl == 1 and y + dy[i] == BOARD_SIZE:
+                elif pl == 1 and y + dy[i] == 1:
                     return True
                 visited[x - 1, y - 1] = True
                 stk.append((x + dx[i], y + dy[i]))

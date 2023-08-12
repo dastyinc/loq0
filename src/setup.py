@@ -6,7 +6,7 @@ install_requires = [
 
 setuptools.setup(
     name="loq0",
-    version="0.0.8",
+    version="0.0.9",
     author="seorii",
     author_email="me@seorii.page",
     description="League of Quoridor",
